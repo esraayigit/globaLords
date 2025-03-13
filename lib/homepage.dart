@@ -6,7 +6,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Anasayfa")),
       body: Center(
-        child: Text("Hoş Geldiniz!", style: TextStyle(fontSize: 24)),
+        child: Text("Hoş Geldinizzzzzz!", style: TextStyle(fontSize: 24)),
       ),
     );
   }
