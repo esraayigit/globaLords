@@ -5,10 +5,12 @@ class BaslangicSayfasi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF22DBE9),
       appBar: AppBar(
-        title: Text("Globalords"),
-        backgroundColor: Colors.green,
-        toolbarHeight: 70,
+        title: Text("GlobaLords",style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600,fontSize: 40)),
+        centerTitle: true,
+        backgroundColor: Color(0xFF22DBE9),
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -16,12 +18,17 @@ class BaslangicSayfasi extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Image.asset(
+              'assets/images/Konu.png',
+              width: 300,
+              height: 300,
+            ),
             Text(
-              "Globalords'e Hoş Geldiniz!",
+              "Globalords'a Hoş Geldiniz!",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Colors.green,
+                color: Colors.white,
               ),
               textAlign: TextAlign.center,
             ),
@@ -29,13 +36,13 @@ class BaslangicSayfasi extends StatelessWidget {
             Text(
               "Bu oyunda bayraklar, banknotlar, başkentler ve özel ipuçlarıyla ülkeleri tahmin etmeye çalışacaksınız. Quizin sonunda puan alacaksınız "
                   "4-5 farklı quiz modu ile eğlenceli ve öğretici bir deneyim sizi bekliyor!",
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 16,color: Colors.black),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 32),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: Colors.red,
                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               ),
               onPressed: () {
