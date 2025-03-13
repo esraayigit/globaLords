@@ -7,7 +7,7 @@ class BaslangicSayfasi extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFF22DBE9),
       appBar: AppBar(
-        title: Text("GlobaLords",style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600,fontSize: 40)),
+        title: Text("GlobaLords",style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600,fontSize: 40,fontFamily: 'Rowdies')),
         centerTitle: true,
         backgroundColor: Color(0xFF22DBE9),
         iconTheme: IconThemeData(color: Colors.white),
@@ -29,6 +29,7 @@ class BaslangicSayfasi extends StatelessWidget {
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
+                fontFamily: 'Rowdies'
               ),
               textAlign: TextAlign.center,
             ),
@@ -36,7 +37,7 @@ class BaslangicSayfasi extends StatelessWidget {
             Text(
               "Bu oyunda bayraklar, banknotlar, başkentler ve özel ipuçlarıyla ülkeleri tahmin etmeye çalışacaksınız. Quizin sonunda puan alacaksınız "
                   "4-5 farklı quiz modu ile eğlenceli ve öğretici bir deneyim sizi bekliyor!",
-              style: TextStyle(fontSize: 16,color: Colors.black),
+              style: TextStyle(fontSize: 16,color: Colors.black,fontFamily: 'Rowdies'),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 32),
@@ -51,7 +52,7 @@ class BaslangicSayfasi extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => HomePage()),
                 );
               },
-              child: Text("Başlamak İçin Tıklayınız", style: TextStyle(color: Colors.white, fontSize: 18)),
+              child: Text("Başlamak İçin Tıklayınız", style: TextStyle(color: Colors.white, fontSize: 18,fontFamily: 'Rowdies')),
             ),
           ],
         ),
