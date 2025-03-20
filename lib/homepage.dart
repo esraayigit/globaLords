@@ -3,9 +3,9 @@ import 'package:globalords/banknot.dart';
 import 'package:globalords/baskentler.dart';
 import 'package:globalords/diller.dart';
 import 'bayraklar.dart';
+import 'CountDownScreen.dart';
 
 class HomePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,170 +19,57 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              width: 400,
-              height: 150,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/bayrakquiz.png'),
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: BorderRadius.circular(40),
-                color: Colors.black.withOpacity(0.4),
-              ),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => bayraklar()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  minimumSize: Size(
-                    MediaQuery.of(context).size.width,
-                    MediaQuery.of(context).size.height / 5,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(40),
-                  ),
-                ),
-                    child: Text(
-                      "Bayrakların hangi ülkeye ait olduğunu bul!",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontFamily: 'Rowdies',
-                      ),
-                    ),
-              ),
-            ),
+            quizButton(context, 'assets/images/bayrakquiz.png', "Bayrakların hangi ülkeye ait olduğunu bul!", Bayraklar()),
             SizedBox(height: 15),
-            Container(
-              width: 400,
-              height: 150,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/baskent.jpg'),
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: BorderRadius.circular(40),
-                color: Colors.black.withOpacity(0.4),
-              ),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => baskentler()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  minimumSize: Size(
-                    MediaQuery.of(context).size.width,
-                    MediaQuery.of(context).size.height / 5,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(40),
-                  ),
-                ),
-                child: Text(
-                  "Başkentleri tahmin et!",
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    color: Colors.white,
-                    fontFamily: 'Rowdies',
-                  ),
-                ),
-              ),
-            ),
+            quizButton(context, 'assets/images/baskent.jpg', "Başkentleri tahmin et!", baskentler()),
             SizedBox(height: 15),
-            Container(
-              width: 400,
-              height: 150,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/banknotes.jpeg'),
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: BorderRadius.circular(40),
-                color: Colors.black.withOpacity(0.4),
-              ),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => banknot()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  minimumSize: Size(
-                    MediaQuery.of(context).size.width,
-                    MediaQuery.of(context).size.height / 5,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(40),
-                  ),
-                ),
-                child: Text(
-                  "Banknotları tahmin et!",
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    color: Colors.white,
-                    fontFamily: 'Rowdies',
-                  ),
-                ),
-              ),
-            ),
+            quizButton(context, 'assets/images/banknotes.jpeg', "Banknotları tahmin et!", banknot()),
             SizedBox(height: 15),
-            Container(
-              width: 400,
-              height: 150,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/languages.jpg'),
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: BorderRadius.circular(40),
-                color: Colors.black.withOpacity(0.4),
-              ),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => diller()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  minimumSize: Size(
-                    MediaQuery.of(context).size.width,
-                    MediaQuery.of(context).size.height / 5,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(40),
-                  ),
-                ),
-                child: Text(
-                  "Bu hangi dil?",
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    color: Colors.white,
-                    fontFamily: 'Rowdies',
-                  ),
-                ),
-              ),
-            ),
+            quizButton(context, 'assets/images/languages.jpg', "Bu hangi dil?", diller()),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget quizButton(BuildContext context, String imagePath, String title, Widget homePage) {
+    return Container(
+      width: 400,
+      height: 150,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(imagePath),
+          fit: BoxFit.cover,
+        ),
+        borderRadius: BorderRadius.circular(40),
+        color: Colors.black.withOpacity(0.4),
+      ),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CountdownScreen(homePage: homePage)),
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          minimumSize: Size(
+            MediaQuery.of(context).size.width,
+            MediaQuery.of(context).size.height / 5,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(40),
+          ),
+        ),
+        child: Text(
+          title,
+          textAlign: TextAlign.start,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+            color: Colors.white,
+            fontFamily: 'Rowdies',
+          ),
         ),
       ),
     );
