@@ -89,10 +89,19 @@ class _BayraklarState extends State<Bayraklar> {
       body: ListView(
         padding: EdgeInsets.all(16),
         children: [
-          quizCard("assets/images/turkiye.png", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/almanya.png", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/fransa.png", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/ispanya.png", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/bayraklar/turkiye.png", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/bayraklar/almanya.png", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/bayraklar/italya.png", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/bayraklar/portekiz.png", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/bayraklar/arjantin.png", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/bayraklar/yunanistan.png", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/bayraklar/finlandiya.png", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/bayraklar/hindistan.png", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/bayraklar/meksika.png", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/bayraklar/avustralya.png", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/bayraklar/yenizelanda.png", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/bayraklar/polonya.png", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/bayraklar/endonezya.png", "Bu bayrak hangi ülkeye ait?"),
         ],
       ),
     );

@@ -37,7 +37,7 @@ class BaslangicSayfasi extends StatelessWidget {
             Text(
               "Bu oyunda bayraklar, banknotlar, başkentler ve özel ipuçlarıyla ülkeleri tahmin etmeye çalışacaksınız. Quizin sonunda puan alacaksınız "
                   "4-5 farklı quiz modu ile eğlenceli ve öğretici bir deneyim sizi bekliyor!",
-              style: TextStyle(fontSize: 16,color: Colors.black,fontFamily: 'Rowdies'),
+              style: TextStyle(fontSize: 16,color: Colors.black),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 32),

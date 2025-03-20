@@ -65,6 +65,19 @@ flutter:
    - assets/images/baskent.jpg
    - assets/images/banknotes.jpeg
    - assets/images/languages.jpg
+   - assets/images/bayraklar/turkiye.png
+   - assets/images/bayraklar/almanya.png
+   - assets/images/bayraklar/italya.png
+   - assets/images/bayraklar/portekiz.png
+   - assets/images/bayraklar/arjantin.png
+   - assets/images/bayraklar/avustralya.png
+   - assets/images/bayraklar/finlandiya.png
+   - assets/images/bayraklar/hindistan.png
+   - assets/images/bayraklar/meksika.png
+   - assets/images/bayraklar/yenizelanda.png
+   - assets/images/bayraklar/yunanistan.png
+   - assets/images/bayraklar/endonezya.png
+   - assets/images/bayraklar/polonya.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
