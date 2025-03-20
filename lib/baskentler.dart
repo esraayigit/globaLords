@@ -89,10 +89,17 @@ class _BaskentlerState extends State<baskentler> {
       body: ListView(
         padding: EdgeInsets.all(16),
         children: [
-          quizCard("assets/images/turkiye.png", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/almanya.png", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/fransa.png", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/ispanya.png", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/tokyo.jpg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/berlin.jpg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/moscow.jpeg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/bosna.jpeg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/kiev.jpeg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/sofya.jpeg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/belgrad.jpeg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/kopenhag.jpg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/bern.jpg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/canberra.jpg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/wellington.jpg", "Bu bayrak hangi ülkeye ait?"),
         ],
       ),
     );
