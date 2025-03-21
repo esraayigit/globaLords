@@ -89,6 +89,19 @@ flutter:
    - assets/images/baskentler/moscow.jpeg
    - assets/images/baskentler/tokyo.jpg
    - assets/images/baskentler/wellington.jpg
+   - assets/images/banknotlar/abdollar.jpeg
+   - assets/images/banknotlar/arab.png
+   - assets/images/banknotlar/argentina.jpg
+   - assets/images/banknotlar/australia.jpg
+   - assets/images/banknotlar/canada.jpg
+   - assets/images/banknotlar/china.png
+   - assets/images/banknotlar/euro.jpg
+   - assets/images/banknotlar/japan.jpg
+   - assets/images/banknotlar/newzealand.jpg
+   - assets/images/banknotlar/norway.jpg
+   - assets/images/banknotlar/russia.jpg
+   - assets/images/banknotlar/southkorea.jpg
+   - assets/images/banknotlar/vietnam.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

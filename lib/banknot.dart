@@ -89,10 +89,19 @@ class _BanknotState extends State<banknot> {
       body: ListView(
         padding: EdgeInsets.all(16),
         children: [
-          quizCard("assets/images/turkiye.png", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/almanya.png", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/fransa.png", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/ispanya.png", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/abdollar.jpeg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/euro.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/arab.png", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/russia.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/canada.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/argentina.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/china.png", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/japan.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/newzealand.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/norway.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/southkorea.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/vietnam.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/australia.jpg", "Bu banknot hangi ülkeye ait?"),
         ],
       ),
     );
