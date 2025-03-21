@@ -89,16 +89,24 @@ class _dillerState extends State<diller> {
       body: ListView(
         padding: EdgeInsets.all(16),
         children: [
-          quizCard("assets/images/turkiye.png", "Bu dil hangi ülkeye ait?"),
-          quizCard("assets/images/almanya.png", "Bu dil hangi ülkeye ait?"),
-          quizCard("assets/images/fransa.png", "Bu dil hangi ülkeye ait?"),
-          quizCard("assets/images/ispanya.png", "Bu dil hangi ülkeye ait?"),
+          quizCard("Egal wie bewölkt der Himmel ist, irgendwo scheint die Sonne noch.", "Bu dil hangi ülkeye ait?"),     // almanca
+          quizCard("Как бы ни было пасмурно, где-то ещё светит солнце.", "Bu dil hangi ülkeye ait?"), // rusca
+          quizCard("Non importa quanto sia nuvoloso il cielo, da qualche parte il sole continua a splendere.", "Bu dil hangi ülkeye ait?"), // italyanca
+          quizCard("No importa cuán nublado esté el cielo, en algún lugar el sol sigue brillando.", "Bu dil hangi ülkeye ait?"), // ispanyollca
+          quizCard(" مهما كانت السماء ملبدة بالغيوم، فإن الشمس لا تزال تشرق في مكان ما", "Bu dil hangi ülkeye ait?"), // arapca
+          quizCard("空がどんなに曇っていても、どこかで太陽は輝き続けている。", "Bu dil hangi ülkeye ait?"), // japon
+          quizCard("하늘이 아무리 흐려도 태양은 어딘가에서 계속 빛나고 있다.", "Bu dil hangi ülkeye ait?"), // kore
+          quizCard("无论天空多么阴云密布，太阳仍然在某个地方闪耀。", "Bu dil hangi ülkeye ait?"), // china-mandarin
+          quizCard("ไม่ว่าท้องฟ้าจะมืดครึ้มแค่ไหน พระอาทิตย์ก็ยังคงส่องแสงอยู่ที่ใดที่หนึ่ง", "Bu dil hangi ülkeye ait?"), // tayca
+          quizCard("Tidak peduli seberapa mendung langit, matahari masih bersinar di suatu tempat. ", "Bu dil hangi ülkeye ait?"), // endonezce
+          quizCard("Kahit gaano kakulimlim ang langit, may araw pa ring sumisikat sa kung saan.", "Bu dil hangi ülkeye ait?"), // filipince-tagalog
+
         ],
       ),
     );
   }
 
-  Widget quizCard(String imagePath, String question) {
+  Widget quizCard(String ornekyazi, String question) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       elevation: 5,
@@ -106,8 +114,9 @@ class _dillerState extends State<diller> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Image.asset(imagePath, height: 150, width: 200, fit: BoxFit.cover),
-            SizedBox(height: 200),
+            SizedBox(height: 100),
+            Text(ornekyazi, style: TextStyle(fontWeight:FontWeight.bold, fontSize: 19, fontFamily: 'Rowdies'),),
+            SizedBox(height: 100),
             Text(question, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             SizedBox(height: 20),
             ElevatedButton(onPressed: () {}, child: Text("Cevabı Seç"))
