@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-class baskentler extends StatefulWidget {
-  const baskentler({super.key});
+class Banknot extends StatefulWidget {
+  const Banknot({super.key});
 
   @override
-  State<baskentler> createState() => _BaskentlerState();
+  State<Banknot> createState() => _BanknotState();
 }
 
-class _BaskentlerState extends State<baskentler> {
+class _BanknotState extends State<Banknot> {
   int remainingTime = 240; // 4 dakika (240 saniye)
   late Timer _timer;
 
@@ -71,7 +71,7 @@ class _BaskentlerState extends State<baskentler> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF22DBE9),
-        title: Text("Baskentler", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 28, fontFamily: 'Rowdies')),
+        title: Text("Banknotlar", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 28, fontFamily: 'Rowdies')),
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.white),
         actions: [
@@ -89,17 +89,19 @@ class _BaskentlerState extends State<baskentler> {
       body: ListView(
         padding: EdgeInsets.all(16),
         children: [
-          quizCard("assets/images/baskentler/tokyo.jpg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/berlin.jpg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/moscow.jpeg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/bosna.jpeg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/kiev.jpeg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/sofya.jpeg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/belgrad.jpeg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/kopenhag.jpg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/bern.jpg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/canberra.jpg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/wellington.jpg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/abdollar.jpeg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/euro.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/arab.png", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/russia.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/canada.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/argentina.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/china.png", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/japan.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/newzealand.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/norway.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/southkorea.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/vietnam.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/banknotlar/australia.jpg", "Bu banknot hangi ülkeye ait?"),
         ],
       ),
     );
@@ -113,7 +115,7 @@ class _BaskentlerState extends State<baskentler> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Image.asset(imagePath, height: 150, width: 200, fit: BoxFit.cover),
+            Image.asset(imagePath, height: 300, width: 500, fit: BoxFit.cover),
             SizedBox(height: 200),
             Text(question, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             SizedBox(height: 20),

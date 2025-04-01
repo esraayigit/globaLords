@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'homepage.dart';
 
-class BaslangicSayfasi extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _BaslangicSayfasiState createState() => _BaslangicSayfasiState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _BaslangicSayfasiState extends State<BaslangicSayfasi> {
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 

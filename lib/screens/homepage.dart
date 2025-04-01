@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:globalords/banknot.dart';
-import 'package:globalords/baskentler.dart';
-import 'package:globalords/diller.dart';
+import 'package:globalords/drawer.dart';
+import 'package:globalords/screens/banknot.dart';
+import 'package:globalords/screens/baskentler.dart';
+import 'package:globalords/screens/diller.dart';
 import 'bayraklar.dart';
-import 'CountDownScreen.dart';
+import 'countdownscreen.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -15,17 +16,18 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.white),
       ),
+      drawer: drawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             quizButton(context, 'assets/images/bayrakquiz.png', "Bayrakların hangi ülkeye ait olduğunu bul!", Bayraklar()),
             SizedBox(height: 15),
-            quizButton(context, 'assets/images/baskent.jpg', "Başkentleri tahmin et!", baskentler()),
+            quizButton(context, 'assets/images/baskent.jpg', "Başkentleri tahmin et!", Baskentler()),
             SizedBox(height: 15),
-            quizButton(context, 'assets/images/banknotes.jpeg', "Banknotları tahmin et!", banknot()),
+            quizButton(context, 'assets/images/banknotes.jpeg', "Banknotları tahmin et!", Banknot()),
             SizedBox(height: 15),
-            quizButton(context, 'assets/images/languages.jpg', "Bu hangi dil?", diller()),
+            quizButton(context, 'assets/images/languages.jpg', "Bu hangi dil?", Diller()),
           ],
         ),
       ),

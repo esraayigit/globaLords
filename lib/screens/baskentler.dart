@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-class banknot extends StatefulWidget {
-  const banknot({super.key});
+class Baskentler extends StatefulWidget {
+  const Baskentler({super.key});
 
   @override
-  State<banknot> createState() => _BanknotState();
+  State<Baskentler> createState() => _BaskentlerState();
 }
 
-class _BanknotState extends State<banknot> {
+class _BaskentlerState extends State<Baskentler> {
   int remainingTime = 240; // 4 dakika (240 saniye)
   late Timer _timer;
 
@@ -71,7 +71,7 @@ class _BanknotState extends State<banknot> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF22DBE9),
-        title: Text("Banknotlar", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 28, fontFamily: 'Rowdies')),
+        title: Text("Baskentler", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 28, fontFamily: 'Rowdies')),
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.white),
         actions: [
@@ -89,19 +89,17 @@ class _BanknotState extends State<banknot> {
       body: ListView(
         padding: EdgeInsets.all(16),
         children: [
-          quizCard("assets/images/banknotlar/abdollar.jpeg", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/banknotlar/euro.jpg", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/banknotlar/arab.png", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/banknotlar/russia.jpg", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/banknotlar/canada.jpg", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/banknotlar/argentina.jpg", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/banknotlar/china.png", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/banknotlar/japan.jpg", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/banknotlar/newzealand.jpg", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/banknotlar/norway.jpg", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/banknotlar/southkorea.jpg", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/banknotlar/vietnam.jpg", "Bu banknot hangi ülkeye ait?"),
-          quizCard("assets/images/banknotlar/australia.jpg", "Bu banknot hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/tokyo.jpg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/berlin.jpg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/moscow.jpeg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/bosna.jpeg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/kiev.jpeg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/sofya.jpeg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/belgrad.jpeg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/kopenhag.jpg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/bern.jpg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/canberra.jpg", "Bu bayrak hangi ülkeye ait?"),
+          quizCard("assets/images/baskentler/wellington.jpg", "Bu bayrak hangi ülkeye ait?"),
         ],
       ),
     );

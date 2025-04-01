@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-class diller extends StatefulWidget {
-  const diller({super.key});
+class Diller extends StatefulWidget {
+  const Diller({super.key});
 
   @override
-  State<diller> createState() => _dillerState();
+  State<Diller> createState() => _DillerState();
 }
 
-class _dillerState extends State<diller> {
+class _DillerState extends State<Diller> {
   int remainingTime = 240; // 4 dakika (240 saniye)
   late Timer _timer;
 
