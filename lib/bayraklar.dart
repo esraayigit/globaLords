@@ -192,12 +192,13 @@ class _BayraklarState extends State<Bayraklar> {
             ),
             SizedBox(height: 10),
             ElevatedButton(
-              onPressed: checkAnswer,
+              onPressed: useHint,
               child: Text("İpucu al (-10 puan)", style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Rowdies')),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,
               ),
             ),
+
             if (hintUsed) Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
