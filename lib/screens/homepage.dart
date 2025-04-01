@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.white),
       ),
-      drawer: drawer(),
+      drawer: AppDrawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

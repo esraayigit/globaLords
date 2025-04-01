@@ -5,9 +5,17 @@ import 'package:globalords/screens/bayraklar.dart';
 import 'package:globalords/screens/diller.dart';
 import 'package:globalords/screens/homepage.dart';
 import 'screens/loginpage.dart';
+import 'ResimSaglayici.dart';
+import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ResimSaglayici(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
