@@ -112,7 +112,8 @@ class _BaslangicSayfasiState extends State<BaslangicSayfasi> {
                   );
                 }
               },
-              child: Text("Giriş yap", style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Rowdies')),
+              child: Text("Giriş yap", style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Rowdies')
+              ),
             ),
           ],
         ),

@@ -68,7 +68,6 @@ class _BayraklarState extends State<Bayraklar> {
       ),
     );
   }
-
   void restartGame() {
     setState(() {
       remainingTime = 240;
@@ -160,7 +159,8 @@ class _BayraklarState extends State<Bayraklar> {
           ),
         ],
       ),
-      body: Padding(
+      body: Container(
+        color: Color(0xFF22DBE9),
         padding: EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -174,20 +174,29 @@ class _BayraklarState extends State<Bayraklar> {
               decoration: InputDecoration(
                 hintText: "Ülke adını yazın",
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(20.0),
                   borderSide: BorderSide(
-                    color: Colors.white, // Beyaz renk
+                    color: Colors.white,
                     width: 2.0,
                   ),
                 ),
               ),
             ),
             SizedBox(height: 20),
-            ElevatedButton(onPressed: checkAnswer, child: Text("Cevabı Gönder")),
+            ElevatedButton(
+              onPressed: checkAnswer,
+              child: Text("Cevapla", style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Rowdies')),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+              ),
+            ),
             SizedBox(height: 10),
             ElevatedButton(
-              onPressed: useHint,
-              child: Text("İpucu Al (-10 Puan)"),
+              onPressed: checkAnswer,
+              child: Text("İpucu al (-10 puan)", style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Rowdies')),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+              ),
             ),
             if (hintUsed) Padding(
               padding: const EdgeInsets.all(8.0),
