@@ -114,6 +114,7 @@ class _BaskentlerState extends State<Baskentler> {
       _timer.cancel();
       showGameOverScreen();
     }
+    hintUsed = false;
   }
 
   void showGameOverScreen() {
@@ -155,7 +156,10 @@ class _BaskentlerState extends State<Baskentler> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF22DBE9),
-        title: Text("Başkentler", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 28, fontFamily: 'Rowdies')),
+        title: Text(
+          "Başkentler",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 28, fontFamily: 'Rowdies'),
+        ),
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.white),
         actions: [
@@ -163,8 +167,8 @@ class _BaskentlerState extends State<Baskentler> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                "${(remainingTime ~/ 60).toString().padLeft(2, '0')}:${(remainingTime % 60).toString().padLeft(2, '0')} Puan: $score",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                "${(remainingTime ~/ 60).toString().padLeft(2, '0')}:${(remainingTime % 60).toString().padLeft(2, '0')}",
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
               ),
             ),
           ),
@@ -176,6 +180,11 @@ class _BaskentlerState extends State<Baskentler> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              "Puan: $score",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+            ),
+            SizedBox(height: 30,),
             Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
               elevation: 4,

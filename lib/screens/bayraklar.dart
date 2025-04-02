@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'dart:math';
 
 class Bayraklar extends StatefulWidget {
   const Bayraklar({super.key});
@@ -11,6 +12,10 @@ class Bayraklar extends StatefulWidget {
 class _BayraklarState extends State<Bayraklar> {
   int remainingTime = 240;
   late Timer _timer;
+  int score = 0;
+  List<String> bayrakListesi = [];
+  List<String> ulkeListesi = [];
+
   Map<String, String> Bayraklar = {
     "assets/images/bayraklar/almanya.png": "Almanya",
     "assets/images/bayraklar/arjantin.png": "Arjantin",
@@ -31,6 +36,12 @@ class _BayraklarState extends State<Bayraklar> {
   void initState() {
     super.initState();
     startTimer();
+    shuffleLists();
+  }
+
+  void shuffleLists() {
+    bayrakListesi = Bayraklar.keys.toList()..shuffle(Random());
+    ulkeListesi = Bayraklar.values.toList()..shuffle(Random());
   }
 
   void startTimer() {
@@ -41,38 +52,55 @@ class _BayraklarState extends State<Bayraklar> {
         });
       } else {
         _timer.cancel();
-        showTimeUpScreen();
+        showGameOverScreen();
       }
     });
   }
 
-  void showTimeUpScreen() {
+  void checkAnswer(String correctAnswer) {
+    setState(() {
+      score += 20;
+      bayrakListesi.removeWhere((key) => Bayraklar[key] == correctAnswer);
+      ulkeListesi.remove(correctAnswer);
+      if (bayrakListesi.isEmpty) {
+        showGameOverScreen();
+      }
+    });
+  }
+
+  void showGameOverScreen() {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text("Süreniz Doldu!"),
-        content: Text("Süreniz sona erdi, tekrar denemek ister misiniz?"),
+        title: Text("Oyun Bitti!"),
+        content: Text("Toplam Puanınız: $score"),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.pop(context);
-              Navigator.pop(context);
+              Navigator.pushNamed(context, '/homepage');
             },
             child: Text("Ana Sayfa"),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(context);
-              setState(() {
-                remainingTime = 240;
-                startTimer();
-              });
+              restartGame();
             },
             child: Text("Tekrar Dene"),
           ),
         ],
       ),
     );
+  }
+
+  void restartGame() {
+    setState(() {
+      remainingTime = 240;
+      score = 0;
+      shuffleLists();
+      startTimer();
+    });
   }
 
   @override
@@ -87,8 +115,8 @@ class _BayraklarState extends State<Bayraklar> {
       appBar: AppBar(
         backgroundColor: Color(0xFF22DBE9),
         title: Text(
-            "Bayraklar",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 28, fontFamily: 'Rowdies')
+          "Bayraklar",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 28, fontFamily: 'Rowdies'),
         ),
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.white),
@@ -104,19 +132,22 @@ class _BayraklarState extends State<Bayraklar> {
           ),
         ],
       ),
-
       body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(height: 20),
+            Text(
+              "Puan: $score",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
-                  children: Bayraklar.keys.map((imagePath) => draggableCard(imagePath)).toList(),
+                  children: bayrakListesi.map((imagePath) => draggableCard(imagePath)).toList(),
                 ),
                 Column(
-                  children: Bayraklar.values.map((country) => dragTargetBox(country)).toList(),
+                  children: ulkeListesi.map((country) => dragTargetBox(country)).toList(),
                 ),
               ],
             ),
@@ -127,16 +158,24 @@ class _BayraklarState extends State<Bayraklar> {
   }
 
   Widget draggableCard(String imagePath) {
-    return Draggable<String>(
-      data: Bayraklar[imagePath],
-      feedback: Material(
-        child: Image.asset(imagePath, height: 100, width: 150, fit: BoxFit.cover),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: Draggable<String>(
+        data: Bayraklar[imagePath],
+        feedback: Material(
+          child: Image.asset(imagePath, height: 100, width: 150, fit: BoxFit.cover),
+        ),
+        childWhenDragging: Opacity(
+          opacity: 0.5,
+          child: Image.asset(imagePath, height: 100, width: 150, fit: BoxFit.cover),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.blueGrey, width: 6),
+          ),
+          child: Image.asset(imagePath, height: 100, width: 150, fit: BoxFit.cover),
+        ),
       ),
-      childWhenDragging: Opacity(
-        opacity: 0.5,
-        child: Image.asset(imagePath, height: 100, width: 150, fit: BoxFit.cover),
-      ),
-      child: Image.asset(imagePath, height: 100, width: 150, fit: BoxFit.cover),
     );
   }
 
@@ -145,11 +184,11 @@ class _BayraklarState extends State<Bayraklar> {
       builder: (context, candidateData, rejectedData) {
         return Container(
           width: 150,
-          height: 50,
+          height: 50,  // Ülke isimleri için yeterli yükseklik
           alignment: Alignment.center,
-          margin: EdgeInsets.symmetric(vertical: 10),
+          margin: EdgeInsets.symmetric(vertical: 20), // Ülke isimleri arasındaki boşluğu artırmak için padding
           decoration: BoxDecoration(
-            color: Colors.blueAccent,
+            color: Colors.green,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Text(
@@ -161,10 +200,9 @@ class _BayraklarState extends State<Bayraklar> {
       },
       onWillAccept: (data) => data == country,
       onAccept: (data) {
-        setState(() {
-          Bayraklar.removeWhere((key, value) => value == country);
-        });
+        checkAnswer(country);
       },
     );
   }
+
 }

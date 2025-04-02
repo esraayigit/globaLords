@@ -22,11 +22,11 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             quizButton(context, 'assets/images/bayrakquiz.png', "Bayrakların hangi ülkeye ait olduğunu bul!", Bayraklar()),
-            SizedBox(height: 15),
+            SizedBox(height: 25),
             quizButton(context, 'assets/images/baskent.jpg', "Başkentleri tahmin et!", Baskentler()),
-            SizedBox(height: 15),
+            SizedBox(height: 25),
             quizButton(context, 'assets/images/banknotes.jpeg', "Banknotları tahmin et!", Banknot()),
-            SizedBox(height: 15),
+            SizedBox(height: 25),
             quizButton(context, 'assets/images/languages.jpg', "Bu hangi dil?", Diller()),
           ],
         ),
@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
   Widget quizButton(BuildContext context, String imagePath, String title, Widget homePage) {
     return Container(
       width: 400,
-      height: 150,
+      height: 175,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(imagePath),
