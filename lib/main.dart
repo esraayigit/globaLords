@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         '/login':(context) => LoginPage(),
         '/homepage': (context) => HomePage(),
         '/bayraklar': (context) => Bayraklar(),
-        '/baskentler': (context) => Baskentler(),
+        '/baskentler': (context) => baskentler(),
         '/banknotlar': (context) => Banknot(),
         '/diller': (context) => Diller(),
       },

@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-class Baskentler extends StatefulWidget {
-  const Baskentler({super.key});
+class baskentler extends StatefulWidget {
+  const baskentler({super.key});
 
   @override
-  State<Baskentler> createState() => _BaskentlerState();
+  State<baskentler> createState() => _BaskentlerState();
 }
 
-class _BaskentlerState extends State<Baskentler> {
-  int remainingTime = 240; // 4 dakika (240 saniye)
+class _BaskentlerState extends State<baskentler> {
+  int remainingTime = 240;
   late Timer _timer;
+  Map<String, String> baskentler = {
+    "assets/images/baskentler/tokyo.jpg": "Japonya",
+    "assets/images/baskentler/berlin.jpg": "Almanya",
+    "assets/images/baskentler/moscow.jpeg": "Rusya",
+    "assets/images/baskentler/bosna.jpeg": "Bosna Hersek",
+    "assets/images/baskentler/kiev.jpeg": "Ukrayna",
+    "assets/images/baskentler/sofya.jpeg": "Bulgaristan",
+    "assets/images/baskentler/belgrad.jpeg": "Sırbistan",
+    "assets/images/baskentler/kopenhag.jpg": "Danimarka",
+    "assets/images/baskentler/bern.jpg": "İsviçre",
+    "assets/images/baskentler/canberra.jpg": "Avustralya",
+    "assets/images/baskentler/wellington.jpg": "Yeni Zelanda",
+  };
 
   @override
   void initState() {
@@ -71,7 +84,10 @@ class _BaskentlerState extends State<Baskentler> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF22DBE9),
-        title: Text("Baskentler", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 28, fontFamily: 'Rowdies')),
+        title: Text(
+            "Baskentler",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 28, fontFamily: 'Rowdies')
+        ),
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.white),
         actions: [
@@ -86,41 +102,67 @@ class _BaskentlerState extends State<Baskentler> {
           ),
         ],
       ),
-      body: ListView(
-        padding: EdgeInsets.all(16),
-        children: [
-          quizCard("assets/images/baskentler/tokyo.jpg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/berlin.jpg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/moscow.jpeg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/bosna.jpeg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/kiev.jpeg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/sofya.jpeg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/belgrad.jpeg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/kopenhag.jpg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/bern.jpg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/canberra.jpg", "Bu bayrak hangi ülkeye ait?"),
-          quizCard("assets/images/baskentler/wellington.jpg", "Bu bayrak hangi ülkeye ait?"),
-        ],
+
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: baskentler.keys.map((imagePath) => draggableCard(imagePath)).toList(),
+                ),
+                Column(
+                  children: baskentler.values.map((country) => dragTargetBox(country)).toList(),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget quizCard(String imagePath, String question) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      elevation: 5,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Image.asset(imagePath, height: 150, width: 200, fit: BoxFit.cover),
-            SizedBox(height: 200),
-            Text(question, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            SizedBox(height: 20),
-            ElevatedButton(onPressed: () {}, child: Text("Cevabı Seç"))
-          ],
-        ),
+  Widget draggableCard(String imagePath) {
+    return Draggable<String>(
+      data: baskentler[imagePath],
+      feedback: Material(
+        child: Image.asset(imagePath, height: 100, width: 150, fit: BoxFit.cover),
       ),
+      childWhenDragging: Opacity(
+        opacity: 0.5,
+        child: Image.asset(imagePath, height: 100, width: 150, fit: BoxFit.cover),
+      ),
+      child: Image.asset(imagePath, height: 100, width: 150, fit: BoxFit.cover),
+    );
+  }
+
+  Widget dragTargetBox(String country) {
+    return DragTarget<String>(
+      builder: (context, candidateData, rejectedData) {
+        return Container(
+          width: 150,
+          height: 50,
+          alignment: Alignment.center,
+          margin: EdgeInsets.symmetric(vertical: 10),
+          decoration: BoxDecoration(
+            color: Colors.blueAccent,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Text(
+            country,
+            style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+        );
+      },
+      onWillAccept: (data) => data == country,
+      onAccept: (data) {
+        setState(() {
+          baskentler.removeWhere((key, value) => value == country);
+        });
+      },
     );
   }
 }

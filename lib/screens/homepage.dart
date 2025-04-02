@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
           children: [
             quizButton(context, 'assets/images/bayrakquiz.png', "Bayrakların hangi ülkeye ait olduğunu bul!", Bayraklar()),
             SizedBox(height: 15),
-            quizButton(context, 'assets/images/baskent.jpg', "Başkentleri tahmin et!", Baskentler()),
+            quizButton(context, 'assets/images/baskent.jpg', "Başkentleri tahmin et!", baskentler()),
             SizedBox(height: 15),
             quizButton(context, 'assets/images/banknotes.jpeg', "Banknotları tahmin et!", Banknot()),
             SizedBox(height: 15),
