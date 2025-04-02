@@ -9,20 +9,23 @@ class Bayraklar extends StatefulWidget {
 }
 
 class _BayraklarState extends State<Bayraklar> {
-  int remainingTime = 240; // 4 dakika (240 saniye)
+  int remainingTime = 240;
   late Timer _timer;
-  int score = 0;
-  int currentQuestionIndex = 0;
-  bool hintUsed = false;
-  TextEditingController answerController = TextEditingController();
-
-  final List<Map<String, dynamic>> questions = [
-    {"image": "assets/images/bayraklar/turkiye.png", "answer": "Türkiye", "hint": "Kurucusu Ulu Önder Gazi Mustafa Kemal Atatürk'tür."},
-    {"image": "assets/images/bayraklar/almanya.png", "answer": "Almanya", "hint": "Başkenti Berlin'dir."},
-    {"image": "assets/images/bayraklar/italya.png", "answer": "İtalya", "hint": "Ünlü pizzalarıyla tanınır."},
-    {"image": "assets/images/bayraklar/portekiz.png", "answer": "Portekiz", "hint": "Cristiano Ronaldo'nun ülkesidir."},
-    {"image": "assets/images/bayraklar/arjantin.png", "answer": "Arjantin", "hint": "Messi'nin doğduğu ülkedir."},
-  ];
+  Map<String, String> Bayraklar = {
+    "assets/images/bayraklar/almanya.png": "Almanya",
+    "assets/images/bayraklar/arjantin.png": "Arjantin",
+    "assets/images/bayraklar/avustralya.png": "Avustralya",
+    "assets/images/bayraklar/endonezya.png": "Endonezya",
+    "assets/images/bayraklar/finlandiya.png": "Finlandiya",
+    "assets/images/bayraklar/hindistan.png": "Hindistan",
+    "assets/images/bayraklar/italya.png": "İtalya",
+    "assets/images/bayraklar/meksika.png": "Meksika",
+    "assets/images/bayraklar/polonya.png": "Polonya",
+    "assets/images/bayraklar/portekiz.png": "Portekiz",
+    "assets/images/bayraklar/turkiye.png": "Türkiye",
+    "assets/images/bayraklar/yenizelanda.png": "Yeni Zelanda",
+    "assets/images/bayraklar/yunanistan.png": "Yunanistan",
+  };
 
   @override
   void initState() {
@@ -48,7 +51,7 @@ class _BayraklarState extends State<Bayraklar> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text("Süreniz Doldu!"),
-        content: Text("Toplam Puanınız: $score\nTekrar denemek ister misiniz?"),
+        content: Text("Süreniz sona erdi, tekrar denemek ister misiniz?"),
         actions: [
           TextButton(
             onPressed: () {
@@ -60,77 +63,16 @@ class _BayraklarState extends State<Bayraklar> {
           TextButton(
             onPressed: () {
               Navigator.pop(context);
-              restartGame();
+              setState(() {
+                remainingTime = 240;
+                startTimer();
+              });
             },
             child: Text("Tekrar Dene"),
           ),
         ],
       ),
     );
-  }
-  void restartGame() {
-    setState(() {
-      remainingTime = 240;
-      score = 0;
-      currentQuestionIndex = 0;
-      hintUsed = false;
-      answerController.clear();
-      startTimer();
-    });
-  }
-
-  void checkAnswer() {
-    String userAnswer = answerController.text.trim().toLowerCase();
-    String correctAnswer = questions[currentQuestionIndex]["answer"].toString().toLowerCase();
-
-    if (userAnswer == correctAnswer) {
-      setState(() {
-        score += 20;
-      });
-    }
-
-    moveToNextQuestion();
-  }
-
-  void moveToNextQuestion() {
-    if (currentQuestionIndex < questions.length - 1) {
-      setState(() {
-        currentQuestionIndex++;
-        hintUsed = false;
-        answerController.clear();
-      });
-    } else {
-      _timer.cancel();
-      showGameOverScreen();
-    }
-  }
-
-  void showGameOverScreen() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text("Oyun Bitti!"),
-        content: Text("Toplam Puanınız: $score"),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              restartGame();
-            },
-            child: Text("Tekrar Oyna"),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void useHint() {
-    if (!hintUsed) {
-      setState(() {
-        score -= 10;
-        hintUsed = true;
-      });
-    }
   }
 
   @override
@@ -144,7 +86,10 @@ class _BayraklarState extends State<Bayraklar> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF22DBE9),
-        title: Text("Bayraklar", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 28, fontFamily: 'Rowdies')),
+        title: Text(
+            "Bayraklar",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 28, fontFamily: 'Rowdies')
+        ),
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.white),
         actions: [
@@ -152,63 +97,74 @@ class _BayraklarState extends State<Bayraklar> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                "${(remainingTime ~/ 60).toString().padLeft(2, '0')}:${(remainingTime % 60).toString().padLeft(2, '0')} Puan: $score",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                "${(remainingTime ~/ 60).toString().padLeft(2, '0')}:${(remainingTime % 60).toString().padLeft(2, '0')}",
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
               ),
             ),
           ),
         ],
       ),
-      body: Container(
-        color: Color(0xFF22DBE9),
-        padding: EdgeInsets.all(16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(questions[currentQuestionIndex]["image"], height: 150, width: 200, fit: BoxFit.cover),
-            SizedBox(height: 20),
-            Text("Bu bayrak hangi ülkeye ait?", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            SizedBox(height: 20),
-            TextField(
-              controller: answerController,
-              decoration: InputDecoration(
-                hintText: "Ülke adını yazın",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                  borderSide: BorderSide(
-                    color: Colors.white,
-                    width: 2.0,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: checkAnswer,
-              child: Text("Cevapla", style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Rowdies')),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-              ),
-            ),
-            SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: useHint,
-              child: Text("İpucu al (-10 puan)", style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Rowdies')),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-              ),
-            ),
 
-            if (hintUsed) Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                questions[currentQuestionIndex]["hint"],
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
-              ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: Bayraklar.keys.map((imagePath) => draggableCard(imagePath)).toList(),
+                ),
+                Column(
+                  children: Bayraklar.values.map((country) => dragTargetBox(country)).toList(),
+                ),
+              ],
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget draggableCard(String imagePath) {
+    return Draggable<String>(
+      data: Bayraklar[imagePath],
+      feedback: Material(
+        child: Image.asset(imagePath, height: 100, width: 150, fit: BoxFit.cover),
+      ),
+      childWhenDragging: Opacity(
+        opacity: 0.5,
+        child: Image.asset(imagePath, height: 100, width: 150, fit: BoxFit.cover),
+      ),
+      child: Image.asset(imagePath, height: 100, width: 150, fit: BoxFit.cover),
+    );
+  }
+
+  Widget dragTargetBox(String country) {
+    return DragTarget<String>(
+      builder: (context, candidateData, rejectedData) {
+        return Container(
+          width: 150,
+          height: 50,
+          alignment: Alignment.center,
+          margin: EdgeInsets.symmetric(vertical: 10),
+          decoration: BoxDecoration(
+            color: Colors.blueAccent,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Text(
+            country,
+            style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+        );
+      },
+      onWillAccept: (data) => data == country,
+      onAccept: (data) {
+        setState(() {
+          Bayraklar.removeWhere((key, value) => value == country);
+        });
+      },
     );
   }
 }
