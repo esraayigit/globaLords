@@ -68,6 +68,8 @@ class _BayraklarState extends State<Bayraklar> {
     });
   }
 
+
+
   void showGameOverScreen() {
     showDialog(
       context: context,
