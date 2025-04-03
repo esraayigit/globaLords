@@ -186,9 +186,9 @@ class _BayraklarState extends State<Bayraklar> {
       builder: (context, candidateData, rejectedData) {
         return Container(
           width: 150,
-          height: 50,  // Ülke isimleri için yeterli yükseklik
+          height: 50,
           alignment: Alignment.center,
-          margin: EdgeInsets.symmetric(vertical: 20), // Ülke isimleri arasındaki boşluğu artırmak için padding
+          margin: EdgeInsets.symmetric(vertical: 20),
           decoration: BoxDecoration(
             color: Colors.green,
             borderRadius: BorderRadius.circular(10),

@@ -17,6 +17,7 @@ class _BaskentlerState extends State<Baskentler> {
   TextEditingController answerController = TextEditingController();
   bool isAnswerCorrect = false;
   bool isAnswered = false;
+  bool isAnsweredCorrectly = false;
 
   final List<Map<String, dynamic>> questions = [
     {"image": "assets/images/baskentler/berlin.jpg","baskent": "Berlin", "answer": "Almanya", "hint": "Bu ülke ünlü otobüs markası Volkswagen'e sahiptir."},
@@ -88,13 +89,17 @@ class _BaskentlerState extends State<Baskentler> {
   }
 
   void checkAnswer() {
+    if (isAnsweredCorrectly) return;
 
     String userAnswer = answerController.text.trim().toLowerCase();
     String correctAnswer = questions[currentQuestionIndex]["answer"].toString().toLowerCase();
 
     setState(() {
       if (userAnswer == correctAnswer) {
-        score += 20;
+        if (!isAnsweredCorrectly) {
+          score += 20;
+          isAnsweredCorrectly = true;
+        }
         isAnswerCorrect = true;
       } else {
         isAnswerCorrect = false;
@@ -108,6 +113,7 @@ class _BaskentlerState extends State<Baskentler> {
       setState(() {
         currentQuestionIndex++;
         isAnswered = false;
+        isAnsweredCorrectly = false;
         answerController.clear();
       });
     } else {
@@ -135,7 +141,6 @@ class _BaskentlerState extends State<Baskentler> {
       ),
     );
   }
-
   void useHint() {
     if (!hintUsed) {
       setState(() {
@@ -248,16 +253,37 @@ class _BaskentlerState extends State<Baskentler> {
               ),
             ),
             SizedBox(height: 20),
-            ElevatedButton(onPressed: checkAnswer, child: Text("Cevapla")),
-            ElevatedButton(onPressed: useHint, child: Text("İpucu al (-10 puan)")),
+            ElevatedButton(
+              onPressed: checkAnswer,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+              ),
+              child: Text("Cevapla", style: TextStyle(color: Colors.white, fontSize: 18)),
+            ),
+            ElevatedButton(
+              onPressed: useHint,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+              ),
+              child: Text(
+                "İpucu al (-10 puan)",
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
+            ),
             if (hintUsed) Text(questions[currentQuestionIndex]["hint"], style: TextStyle(color: Colors.red)),
             ElevatedButton(
-              onPressed: isAnswered
-                  ? () {
-                moveToNextQuestion();
-              }
-                  : null,
-              child: Text("Diğer Soruyu Geç"),
+              onPressed: moveToNextQuestion,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                disabledBackgroundColor: Colors.red.withOpacity(0.5),
+              ),
+              child: Text(
+                "Diğer Soruya Geç",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
+              ),
             ),
           ],
         ),
